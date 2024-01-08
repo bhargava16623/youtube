@@ -3,12 +3,20 @@ import hamburger from '../Components/assets/hamburger.png';
 import youtubelogo from '../Components/assets/youtubelogo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux';
+import { toggleMenu } from '../Utils/appSlice';
 
 function Header() {
+ 
+  const dispatch= useDispatch();
+  const toggleMenuHandler = () => {
+    dispatch(toggleMenu());
+  };
+
   return (
     <div className='grid grid-flow-col p-5 m-2 shadow-lg'>
         <div className='flex col-span-1'>
-            <img className='h-8 mt-2' alt='menu' src={hamburger}/>
+            <img className='h-8 mt-2 cursor-pointer' alt='menu' src={hamburger} onClick={()=>toggleMenuHandler()}/>
             <img className='h-12 mx-4' alt='youtube-logo' src={youtubelogo}/>
         </div>
         <div className='col-span-10 pl-56'>
